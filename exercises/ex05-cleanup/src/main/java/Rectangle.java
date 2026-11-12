@@ -1,29 +1,45 @@
+/** A rectangle whose dimensions can be scaled. */
 public class Rectangle {
     private double width;
     private double height;
 
-    public Rectangle(double w,double h){
-        this.width=w;
-        this.height=h;
-    }
-
-    public double area(){
-        return width*height;
+    /**
+     * Creates a rectangle with the given dimensions.
+     *
+     * @param width the initial width
+     * @param height the initial height
+     */
+    public Rectangle(double width, double height) {
+        this.width = width;
+        this.height = height;
     }
 
     /**
-     * scales the rectangle
-     * @param factor
+     * Computes this rectangle's area.
+     *
+     * @return the width multiplied by the height
      */
-    public void scale(double factor) {
-      width = width * factor;
-      height = height * factor;
+    public double area() {
+        return width * height;
     }
 
-    public boolean isLargerThan(Rectangle other){
-        if(area() > other.area())
-            return true;
-        else
-            return false;
+    /**
+     * Scales both dimensions by the given factor.
+     *
+     * @param factor the multiplier for each dimension
+     */
+    public void scale(double factor) {
+        width *= factor;
+        height *= factor;
+    }
+
+    /**
+     * Compares this rectangle's area with another's.
+     *
+     * @param other the rectangle to compare with
+     * @return true if this rectangle has greater area
+     */
+    public boolean isLargerThan(Rectangle other) {
+        return area() > other.area();
     }
 }
