@@ -1,4 +1,6 @@
+import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -32,13 +34,25 @@ public class RegistrationForm {
    * @return the form's root panel
    */
   public static JPanel buildForm() {
-    JPanel panel = new JPanel(new FlowLayout());
-    panel.add(new JLabel("First name:"));
-    panel.add(new JTextField(12));
-    panel.add(new JLabel("Last name:"));
-    panel.add(new JTextField(12));
-    panel.add(new JButton("Submit"));
-    panel.add(new JButton("Cancel"));
+    JPanel fields = new JPanel(new GridLayout(2, 2, 5, 5));
+    JTextField firstName = new JTextField(12);
+    JTextField lastName = new JTextField(12);
+    JLabel firstLabel = new JLabel("First name:");
+    JLabel lastLabel = new JLabel("Last name:");
+    firstLabel.setLabelFor(firstName);
+    lastLabel.setLabelFor(lastName);
+    fields.add(firstLabel);
+    fields.add(firstName);
+    fields.add(lastLabel);
+    fields.add(lastName);
+
+    JPanel buttons = new JPanel(new FlowLayout());
+    buttons.add(new JButton("Submit"));
+    buttons.add(new JButton("Cancel"));
+
+    JPanel panel = new JPanel(new BorderLayout());
+    panel.add(fields, BorderLayout.CENTER);
+    panel.add(buttons, BorderLayout.SOUTH);
     return panel;
   }
 
